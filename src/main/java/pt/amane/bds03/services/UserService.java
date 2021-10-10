@@ -1,6 +1,5 @@
 package pt.amane.bds03.services;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,23 +12,23 @@ import pt.amane.bds03.entities.User;
 import pt.amane.bds03.repositories.UserRepository;
 
 @Service
-public class UserService implements UserDetailsService{
-	
+public class UserService implements UserDetailsService {
+
 	private Logger logger = LoggerFactory.getLogger(UserService.class);
-	
+
 	@Autowired
 	private UserRepository repository;
-	
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
+
 		User user = repository.findByEmail(username);
-		if(user == null) {
+		if (user == null) {
 			logger.error("Email not found! " + username);
 			throw new UsernameNotFoundException("Email not found!");
 		}
 		logger.info("User found success! " + username);
-		return null;
+		return user;
 	}
 
 }

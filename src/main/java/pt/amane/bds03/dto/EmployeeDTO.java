@@ -2,14 +2,24 @@ package pt.amane.bds03.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import pt.amane.bds03.entities.Employee;
 
 public class EmployeeDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	
+	@NotBlank(message = "The field NAME is required!")
 	private String name;
+	
+	@Email(message = "The field EMAIL sintaxe is invalid!")
 	private String email;
+	
+	@NotNull(message = "The field DEPARTMENTID is required!")
 	private Long departmentId;
 	
 	public EmployeeDTO() {
