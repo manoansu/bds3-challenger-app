@@ -119,7 +119,7 @@ public class EmployeeControllerIT {
 		
 		result.andExpect(status().isUnprocessableEntity());
 		result.andExpect(jsonPath("$.errors[0].fieldName").value("name"));
-		result.andExpect(jsonPath("$.errors[0].message").value("Campo requerido"));
+		result.andExpect(jsonPath("$.errors[0].message").value("The field NAME is required!"));
 	}
 
 	@Test
@@ -139,7 +139,7 @@ public class EmployeeControllerIT {
 		
 		result.andExpect(status().isUnprocessableEntity());
 		result.andExpect(jsonPath("$.errors[0].fieldName").value("email"));
-		result.andExpect(jsonPath("$.errors[0].message").value("Email inválido"));
+		result.andExpect(jsonPath("$.errors[0].message").value("The field EMAIL sintaxe is invalid!"));
 	}
 
 	@Test
@@ -159,6 +159,6 @@ public class EmployeeControllerIT {
 		
 		result.andExpect(status().isUnprocessableEntity());
 		result.andExpect(jsonPath("$.errors[0].fieldName").value("departmentId"));
-		result.andExpect(jsonPath("$.errors[0].message").value("Campo requerido"));
+		result.andExpect(jsonPath("$.errors[0].message").value("The field DEPARTMENTID is required!"));
 	}
 }
